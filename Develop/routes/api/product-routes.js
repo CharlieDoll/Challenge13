@@ -51,15 +51,7 @@ router.get("/:id", async (req, res) => {
 // create new product
 router.post("/", async (req, res) => {
   try {
-    const newProduct = await Product.create(req.body, {
-      where: {
-        Product: req.params.Product,
-        product_name: {},
-        price: {},
-        stock: {},
-        tagIds: [],
-      },
-    });
+    const newProduct = await Product.create(req.body);
     res.status(200).json(newProduct);
   } catch (err) {
     res.status(500).json(err);
